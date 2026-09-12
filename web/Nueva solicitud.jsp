@@ -486,10 +486,10 @@
             
               <select id="tipo" name="tipo">
                 <option value="">Selecciona una opción</option>
-                <option value="pedido_no_entregado">Pedido no entregado</option>
-                <option value="producto_defectuoso">Producto defectuoso</option>
-                <option value="cambio_devolucion">Cambio o devolución</option>
-                <option value="consulta_general">Consulta general</option>
+                <option value="pedido_no_entregado">Petición</option>
+                <option value="producto_defectuoso">Queja</option>
+                <option value="cambio_devolucion">Reclamo</option>
+                <option value="consulta_general">Sugerencia</option>
                 <option value="otro">Otro</option>
               </select>
               <span class="caret">&#9662;</span>
@@ -515,7 +515,8 @@
 
           <div class="acciones">
             <button type="submit" class="btn-enviar">Enviar solicitud</button>
-            <button type="button" class="btn-cancelar" id="btnCancelar">Cancelar</button>
+          
+            <button type="button" class="btn-cancelar" id="btnCancelar" onclick="window.location.href='pagina principal.jsp'">Cancelar</button>
           </div>
         </form>
       </div>

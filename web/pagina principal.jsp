@@ -308,7 +308,7 @@
 
   <div class="hero-content">
     <h1>Cada solicitud, bien conectada</h1>
-    <p class="sub">Conezha centraliza el registro, seguimiento y solución de solicitudes para que tu equipo responda a tiempo, siempre.</p>
+    <p class="sub">Conezhya centraliza el registro, seguimiento y solución de solicitudes para que tu equipo responda a tiempo, siempre.</p>
     <div class="cta-row">
       <a href="Nueva solicitud.jsp" class="btn-primary"> 
     <svg width="18" height="18" viewBox="0 0 24 24" 
@@ -318,7 +318,7 @@
     </svg> 
     Enviar solicitud 
 </a>
-      <a href="#" class="btn-secondary">
+       <a href="Mis solicitudes.jsp" class="btn-secondary"> 
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
         Consultar estado
       </a>
