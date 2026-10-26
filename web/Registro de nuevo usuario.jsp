@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CONEZHYA · Registro</title>
+<title>CONEZHYA Â· Registro</title>
 <style>
   :root{
     --azul-oscuro:#0b2f4e;
@@ -36,7 +36,7 @@
     position:relative;
     overflow-x:hidden;
   }
-  /* líneas decorativas como en la imagen de referencia */
+  /* lÃ­neas decorativas como en la imagen de referencia */
   body::before, body::after{
     content:"";
     position:absolute;
@@ -193,28 +193,31 @@
 </style>
 </head>
 <body>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<body>
 
 <div class="card">
 
   <div id="vistaFormulario">
-    <img src="Logo2.jpeg" alt="Logo CONEZHYA" class="logo">
+    <img src="${pageContext.request.contextPath}/Logo2.jpeg" alt="Logo CONEZHYA" class="logo">
     <h1>Crea tu cuenta</h1>
     <p class="sub">
-      Regístrate para gestionar tus solicitudes,
+      RegÃ­strate para gestionar tus solicitudes,
       hablar con nuestro equipo de soporte y mantener tu perfil siempre actualizado.
     </p>
 
-    <form id="formRegistro" novalidate>
+    <form id="formRegistro" novalidate method="post"
+          action="${pageContext.request.contextPath}/ServleRegistro">
 
       <div class="fila-doble">
         <div class="campo">
           <label for="nombres">Nombres</label>
-          <input type="text" id="nombres" placeholder="Ej: Andrés" autocomplete="given-name">
+          <input type="text" id="nombres" name="nombres" placeholder="Ej: AndrÃ©s" autocomplete="given-name">
           <div class="msg-error" id="err-nombres"></div>
         </div>
         <div class="campo">
           <label for="apellidos">Apellidos</label>
-          <input type="text" id="apellidos" placeholder="Ej: Gómez" autocomplete="family-name">
+          <input type="text" id="apellidos" name="apellidos" placeholder="Ej: GÃ³mez" autocomplete="family-name">
           <div class="msg-error" id="err-apellidos"></div>
         </div>
       </div>
@@ -222,7 +225,7 @@
       <div class="fila-cedula">
         <div class="campo">
           <label for="tipoDocumento">Tipo</label>
-          <select id="tipoDocumento">
+          <select id="tipoDocumento" name="tipoDocumento">
             <option value="CC">C.C.</option>
             <option value="CE">C.E.</option>
             <option value="TI">T.I.</option>
@@ -231,117 +234,153 @@
           </select>
         </div>
         <div class="campo">
-          <label for="cedula">Número de documento</label>
-          <input type="text" id="cedula" placeholder="Ej: 1032789456" inputmode="numeric" autocomplete="off">
+          <label for="cedula">NÃºmero de documento</label>
+          <input type="text" id="cedula" name="numeroDocumento" placeholder="Ej: 1032789456" inputmode="numeric" autocomplete="off">
           <div class="msg-error" id="err-cedula"></div>
         </div>
       </div>
 
       <div class="campo">
-        <label for="correo">Correo electrónico</label>
-        <input type="email" id="correo" placeholder="tucorreo@ejemplo.com" autocomplete="email">
+        <label for="correo">Correo electrÃ³nico</label>
+        <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com" autocomplete="email">
         <div class="msg-error" id="err-correo"></div>
       </div>
 
       <div class="campo">
         <label for="celular">Celular</label>
-        <input type="tel" id="celular" placeholder="Ej: 3001234567" inputmode="numeric" autocomplete="tel">
+        <input type="tel" id="celular" name="celular" placeholder="Ej: 3001234567" inputmode="numeric" autocomplete="tel">
         <div class="msg-error" id="err-celular"></div>
       </div>
+
+      <div class="campo">
+        <label for="contrasena">ContraseÃ±a</label>
+        <input type="password" id="contrasena" name="contrasena" placeholder="Crea tu contraseÃ±a" autocomplete="new-password">
+        <div class="msg-error" id="err-contrasena"></div>
+      </div>
+
+      <div class="campo">
+        <label for="confirmar">Confirma contraseÃ±a</label>
+        <input type="password" id="confirmar" name="confirmar" placeholder="Repite tu contraseÃ±a" autocomplete="new-password">
+        <div class="msg-error" id="err-confirmar"></div>
+      </div>
+
+      <%-- Errores que devuelve el servidor (correo repetido, etc.) --%>
+      <% if (request.getAttribute("error") != null) { %>
+      <div class="msg-error" style="display:block; margin-bottom:12px;">${error}</div>
+      <% } %>
 
       <button type="submit">Crear cuenta</button>
     </form>
 
-    <div class="lema">Conexión que soluciona, excelencia que sorprende.</div>
-  </div>
-
-  <div class="exito" id="vistaExito">
-    <div class="icono">?</div>
-    <h2>¡Registro exitoso!</h2>
-    <p>Tu cuenta ha sido creada correctamente. Ya puedes iniciar sesión en CONEZHYA.</p>
-    <a href="index.jsp">
-    <button type="button" id="btnVolver">Volver a inicio de sesión</button>
-</a>
+    <div class="lema">ConexiÃ³n que soluciona, excelencia que sorprende.</div>
   </div>
 
 </div>
 
+  <div class="exito" id="vistaExito">
+    <div class="icono">?</div>
+    <h2>Â¡Registro exitoso!</h2>
+    <p>Tu cuenta ha sido creada correctamente. Ya puedes iniciar sesiÃ³n en CONEZHYA.</p>
+    <a href="index.jsp">
+    <button type="button" id="btnVolver">Volver a inicio de sesiÃ³n</button>
+</a>
+  </div>
+
+</div>
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+
   const form = document.getElementById('formRegistro');
-  const vistaFormulario = document.getElementById('vistaFormulario');
-  const vistaExito = document.getElementById('vistaExito');
-  const btnVolver = document.getElementById('btnVolver');
-
-  const campos = {
-    nombres: { input: document.getElementById('nombres'), err: document.getElementById('err-nombres') },
-    apellidos: { input: document.getElementById('apellidos'), err: document.getElementById('err-apellidos') },
-    cedula: { input: document.getElementById('cedula'), err: document.getElementById('err-cedula') },
-    correo: { input: document.getElementById('correo'), err: document.getElementById('err-correo') },
-    celular: { input: document.getElementById('celular'), err: document.getElementById('err-celular') },
-  };
-
-  function limpiarError(nombre){
-    campos[nombre].input.classList.remove('invalido');
-    campos[nombre].err.textContent = '';
+  if (!form) {
+    alert('No existe un <form> con id="formRegistro".');
+    return;
   }
 
-  function marcarError(nombre, mensaje){
-    campos[nombre].input.classList.add('invalido');
-    campos[nombre].err.textContent = mensaje;
-  }
+  const ids = ['nombres', 'apellidos', 'cedula', 'correo', 'celular', 'contrasena', 'confirmar'];
+  const campos = {};
+  const faltan = [];
 
-  Object.keys(campos).forEach(nombre=>{
-    campos[nombre].input.addEventListener('input', ()=> limpiarError(nombre));
+  ids.forEach(function (id) {
+    const input = document.getElementById(id);
+    if (!input) { faltan.push(id); return; }
+
+    let err = document.getElementById('err-' + id);
+    if (!err) {                                   // si no existe el mensaje, se crea
+      err = document.createElement('span');
+      err.id = 'err-' + id;
+      err.style.cssText = 'color:#d32f2f;font-size:12px;display:block;margin-top:4px;';
+      input.insertAdjacentElement('afterend', err);
+    }
+    campos[id] = { input: input, err: err };
   });
 
-  form.addEventListener('submit', function(e){
+  function marcarError(id, mensaje) {
+    campos[id].input.classList.add('invalido');
+    campos[id].input.style.borderColor = '#d32f2f';
+    campos[id].err.textContent = mensaje;
+  }
+
+  function limpiarError(id) {
+    campos[id].input.classList.remove('invalido');
+    campos[id].input.style.borderColor = '';
+    campos[id].err.textContent = '';
+  }
+
+  Object.keys(campos).forEach(function (id) {
+    campos[id].input.addEventListener('input', function () { limpiarError(id); });
+  });
+
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    if (faltan.length) {
+      alert('Faltan campos con estos id en el formulario: ' + faltan.join(', '));
+      return;
+    }
+
+    Object.keys(campos).forEach(limpiarError);
     let valido = true;
 
-    const tipoDocumento = document.getElementById('tipoDocumento').value;
-    const nombres = campos.nombres.input.value.trim();
-    const apellidos = campos.apellidos.input.value.trim();
-    const cedula = campos.cedula.input.value.trim();
-    const correo = campos.correo.input.value.trim();
-    const celular = campos.celular.input.value.trim();
+    const tipo       = document.getElementById('tipoDocumento');
+    const nombres    = campos.nombres.input.value.trim();
+    const apellidos  = campos.apellidos.input.value.trim();
+    const cedula     = campos.cedula.input.value.trim();
+    const correo     = campos.correo.input.value.trim();
+    const celular    = campos.celular.input.value.trim();
+    const contrasena = campos.contrasena.input.value;
+    const confirmar  = campos.confirmar.input.value;
 
-    if(nombres.length < 2){
-      marcarError('nombres', 'Ingresa un nombre válido.');
+    if (tipo && tipo.value === '') {
+      tipo.style.borderColor = '#d32f2f';
       valido = false;
+    } else if (tipo) {
+      tipo.style.borderColor = '';
     }
-    if(apellidos.length < 2){
-      marcarError('apellidos', 'Ingresa un apellido válido.');
-      valido = false;
+    if (nombres.length < 2)   { marcarError('nombres', 'Ingresa un nombre vÃ¡lido.'); valido = false; }
+    if (apellidos.length < 2) { marcarError('apellidos', 'Ingresa un apellido vÃ¡lido.'); valido = false; }
+    if (!/^\d{6,12}$/.test(cedula)) {
+      marcarError('cedula', 'El documento debe tener entre 6 y 12 dÃ­gitos.'); valido = false;
     }
-    if(!/^\d{6,12}$/.test(cedula)){
-      marcarError('cedula', 'La cédula debe tener entre 6 y 12 dígitos.');
-      valido = false;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+      marcarError('correo', 'Ingresa un correo electrÃ³nico vÃ¡lido.'); valido = false;
     }
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)){
-      marcarError('correo', 'Ingresa un correo electrónico válido.');
-      valido = false;
+    if (!/^\d{7,10}$/.test(celular)) {
+      marcarError('celular', 'Ingresa un nÃºmero de celular vÃ¡lido.'); valido = false;
     }
-    if(!/^\d{7,10}$/.test(celular)){
-      marcarError('celular', 'Ingresa un número de celular válido.');
-      valido = false;
+    if (contrasena.length < 6 || contrasena.length > 45) {
+      marcarError('contrasena', 'La contraseÃ±a debe tener entre 6 y 45 caracteres.'); valido = false;
+    }
+    if (confirmar !== contrasena) {
+      marcarError('confirmar', 'Las contraseÃ±as no coinciden.'); valido = false;
     }
 
-    if(!valido) return;
+    if (!valido) {
+      const primero = form.querySelector('.invalido');
+      if (primero) primero.focus();
+      return;                          // no envÃ­a nada
+    }
 
-    // Aquí se enviarían los datos al backend (fetch/AJAX)
-    const datosRegistro = { tipoDocumento, nombres, apellidos, cedula, correo, celular };
-    console.log('Datos de registro:', datosRegistro);
-
-    vistaFormulario.style.display = 'none';
-    vistaExito.style.display = 'block';
+    form.submit();                     // todo correcto: envÃ­a al servlet
   });
-
-  btnVolver.addEventListener('click', function(){
-    form.reset();
-    vistaExito.style.display = 'none';
-    vistaFormulario.style.display = 'block';
-  });
+});
 </script>
-
-</body>
-</html>

@@ -5,101 +5,248 @@
 --%>
 
 
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CONEZHA · Iniciar sesión</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CONEZHYA Â· Iniciar sesiÃ³n</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/styles.css">
 </head>
+
 <body>
-    <a href="pagina principal.jsp" style="position:absolute; top:24px; left:24px; display:flex; align-items:center; gap:6px; color:#FFFFFF; font-family:Arial, sans-serif; font-size:14px; font-weight:600; text-decoration:none; z-index:10;">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M19 12H5"/>
-    <path d="M12 19l-7-7 7-7"/>
-  </svg>
-  Volver
-  
+
+<a href="${pageContext.request.contextPath}/paginaPrincipal.jsp"
+   style="position:absolute; top:24px; left:24px;
+          display:flex; align-items:center; gap:6px;
+          color:#FFFFFF; font-family:Arial,sans-serif;
+          font-size:14px; font-weight:600;
+          text-decoration:none; z-index:10;">
+
+    <svg width="20" height="20"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2">
+        <path d="M19 12H5"/>
+        <path d="M12 19l-7-7 7-7"/>
+    </svg>
+
+    Volver
 </a>
 
-
-  <div class="page">
+<div class="page">
 
     <aside class="brand">
-      <div class="brand__content">
-        <div class="brand__mark" aria-hidden="true">
-          
+
         <div class="brand__content">
-  <div class="brand__logo-card">
-      <img class="brand__logo" src="Logo2.jpeg" >
-  </div>
-</div>
-         
 
-        
-      </div>
+            <div class="brand__mark"
+                 aria-hidden="true">
 
-      <svg class="brand__weave" viewBox="0 0 420 420" aria-hidden="true">
-        <g stroke="#6FE7D0" stroke-opacity="0.35" stroke-width="1.4" fill="none">
-          <path d="M20 400 C 90 340, 120 300, 90 260 S 40 190, 110 160"/>
-          <path d="M110 170 C 200 135, 190 150, 230 120"/>
-          <path d="M230 120 C 270 95, 300 100, 340 70"/>
-          <path d="M100 260 C 150 250, 170 220, 230 210"/>
-        </g>
-        <g fill="#6FE7D0">
-          <circle cx="20" cy="380" r="4"/>
-          <circle cx="90" cy="260" r="3.5"/>
-          <circle cx="110" cy="160" r="4"/>
-          <circle cx="230" cy="120" r="3.5"/>
-          <circle cx="230" cy="210" r="3"/>
-          <circle cx="340" cy="70" r="4.5"/>
-        </g>
-      </svg>
+                <div class="brand__content">
+
+                    <div class="brand__logo-card">
+
+                        <img class="brand__logo"
+                             src="${pageContext.request.contextPath}/Logo2.jpeg"
+                             alt="Logo CONEZHYA">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <svg class="brand__weave"
+             viewBox="0 0 420 420"
+             aria-hidden="true">
+
+            <g stroke="#6FE7D0"
+               stroke-opacity="0.35"
+               stroke-width="1.4"
+               fill="none">
+
+                <path d="M20 400 C 90 340, 120 300, 90 260 S 40 190, 110 160"/>
+                <path d="M110 170 C 200 135, 190 150, 230 120"/>
+                <path d="M230 120 C 270 95, 300 100, 340 70"/>
+                <path d="M100 260 C 150 250, 170 220, 230 210"/>
+
+            </g>
+
+            <g fill="#6FE7D0">
+                <circle cx="20" cy="380" r="4"/>
+                <circle cx="90" cy="260" r="3.5"/>
+                <circle cx="110" cy="160" r="4"/>
+                <circle cx="230" cy="120" r="3.5"/>
+                <circle cx="230" cy="210" r="3"/>
+                <circle cx="340" cy="70" r="4.5"/>
+            </g>
+
+        </svg>
+
     </aside>
 
     <main class="panel">
-      <div class="login">
-        <h2>Inicia sesión</h2>
-        <p class="login__subtitle">Ingresa tus datos para continuar</p>
 
-       <form action="${pageContext.request.contextPath}/Inicio.jsp" method="post" novalidate>
-          <div class="field">
-            <label for="usuario">Usuario</label>
-            <input id="usuario" name="usuario" type="text" autocomplete="username" placeholder="Escribe tu usuario">
-          </div>
+        <div class="login">
 
-          <div class="field">
-            <label for="password">Contraseña</label>
-            <div class="password-field">
-              <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Escribe tu contraseña">
-              <button type="button" class="toggle-password" aria-label="Mostrar contraseña" aria-pressed="false">
-                <svg viewBox="0 0 24 24" width="18" height="18">
-                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                  <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                </svg>
-              </button>
-            </div>
-          </div>
+            <h2>Inicia sesiÃ³n</h2>
 
-          <button type="submit" class="btn-primary">Ingresar</button>
+            <p class="login__subtitle">
+                Ingresa tus datos para continuar
+            </p>
 
-          
-           <div class="login__links">
-  <a href="#">¿Olvidaste tu contraseña?</a>
-  <a href="Registro de nuevo usuario.jsp">Regístrate aquí</a>
-</div>
-          </div>
-        </form>
-      </div>
+            <form action="${pageContext.request.contextPath}/LoginServlet"
+                  method="post">
 
-      <p class="panel__footer">Conexión que soluciona, excelencia que sorprende.</p>
+                <div class="field">
+
+                    <label for="usuario">
+                        Usuario
+                    </label>
+
+                    <input id="usuario"
+                           name="correo"
+                           type="email"
+                           autocomplete="username"
+                           placeholder="Escribe tu correo"
+                           required>
+
+                </div>
+
+                <div class="field">
+
+                    <label for="password">
+                        ContraseÃ±a
+                    </label>
+
+                    <div class="password-field">
+
+                        <input id="password"
+                               name="contrasena"
+                               type="password"
+                               autocomplete="current-password"
+                               placeholder="Escribe tu contraseÃ±a"
+                               required>
+
+                        <button type="button"
+                                class="toggle-password"
+                                aria-label="Mostrar contraseÃ±a"
+                                aria-pressed="false">
+
+                            <svg viewBox="0 0 24 24"
+                                 width="18"
+                                 height="18">
+
+                                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      stroke-width="1.6"/>
+
+                                <circle cx="12"
+                                        cy="12"
+                                        r="3"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"/>
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Mensaje de error del Servlet -->
+
+                <p class="login__error"
+                   role="alert"
+                   style="color:#d32f2f; font-size:13px;">
+                    ${error}
+                </p>
+<% if ("ok".equals(request.getParameter("registro"))) { %>
+<p style="color:green; font-size:13px;">
+    Registro exitoso. Ya puedes iniciar sesiÃ³n.
+</p>
+<% } %>
+
+<p style="color:green;">
+    ${mensaje}
+</p>
+
+                <button type="submit"
+                        class="btn-primary">
+                    Ingresar
+                </button>
+
+                <div class="login__links">
+
+                    <a href="#">
+                        Â¿Olvidaste tu contraseÃ±a?
+                    </a>
+
+                    <a href="${pageContext.request.contextPath}/Registro%20de%20nuevo%20usuario.jsp">
+                        RegÃ­strate aquÃ­
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <p class="panel__footer">
+            ConexiÃ³n que soluciona, excelencia que sorprende.
+        </p>
+
     </main>
 
-  </div>
+</div>
+
+<script>
+document.querySelector(".toggle-password")
+    .addEventListener("click", function () {
+
+        const campo = document.getElementById("password");
+
+        const visible = campo.type === "text";
+
+        campo.type = visible ? "password" : "text";
+
+        this.setAttribute(
+            "aria-pressed",
+            String(!visible)
+        );
+
+        this.setAttribute(
+            "aria-label",
+            visible ? "Mostrar contraseÃ±a" : "Ocultar contraseÃ±a"
+        );
+    });
+</script>
+
+</body>
+</html>
+
 
 <script>
   const toggle = document.querySelector('.toggle-password');
@@ -108,7 +255,7 @@
     const isHidden = passwordInput.type === 'password';
     passwordInput.type = isHidden ? 'text' : 'password';
     toggle.setAttribute('aria-pressed', String(isHidden));
-    toggle.setAttribute('aria-label', isHidden ? 'Ocultar contraseña' : 'Mostrar contraseña');
+    toggle.setAttribute('aria-label', isHidden ? 'Ocultar contraseÃ±a' : 'Mostrar contraseÃ±a');
   });
 </script>
 </body>
@@ -190,7 +337,7 @@ h1, h2 {
   display: inline-block;
   background: rgba(270, 255, 270, 0.94);
   border-radius: 14px;
-  padding: 15px 20px;   /* más padding para que acompañe el tamaño nuevo */
+  padding: 15px 20px;   /* mÃ¡s padding para que acompaÃ±e el tamaÃ±o nuevo */
 }
 
 .brand__logo {
@@ -200,7 +347,7 @@ h1, h2 {
   height: auto;
 }
 .brand__content {
-  transform: translateY(-10px);   /* ajusta el número: más negativo = más arriba */
+  transform: translateY(-10px);   /* ajusta el nÃºmero: mÃ¡s negativo = mÃ¡s arriba */
 }
 .brand__name {
   color: #FFFFFF;
@@ -225,7 +372,7 @@ h1, h2 {
   z-index: 1;
 }
 .brand__content {
-  transform: translateX(20px);   /* ajusta el número: más alto = más a la derecha */
+  transform: translateX(20px);   /* ajusta el nÃºmero: mÃ¡s alto = mÃ¡s a la derecha */
 }
 
 

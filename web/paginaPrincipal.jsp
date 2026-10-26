@@ -1,6 +1,6 @@
  
  
- 
+
  <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -147,11 +147,16 @@
   }
   .btn-primary:hover { background: #178f87; }
   .btn-secondary {
-    background: transparent;
-    color: var(--navy-deep);
-    border: 1.5px solid var(--navy-deep);
-  }
-  .btn-secondary:hover { background: rgba(11,42,74,0.06); }
+    background: #1ba79e;
+    color: #ffffff;
+    border: 1.5px solid #1ba79e;
+}
+
+.btn-secondary:hover {
+    background: #178f87;
+    color: #ffffff;
+    border-color: #178f87;
+}
 
   /* ---------- FEATURES STRIP ---------- */
   .features {
@@ -310,18 +315,23 @@
     <h1>Cada solicitud, bien conectada</h1>
     <p class="sub">Conezhya centraliza el registro, seguimiento y solución de solicitudes para que tu equipo responda a tiempo, siempre.</p>
     <div class="cta-row">
-      <a href="Nueva solicitud.jsp" class="btn-primary"> 
-    <svg width="18" height="18" viewBox="0 0 24 24" 
-         fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M22 2L11 13"/>
-        <path d="M22 2l-7 20-4-9-9-4 20-7z"/>
-    </svg> 
-    Enviar solicitud 
+      
+       
+<a class="btn-secondary"
+   href="${pageContext.request.contextPath}/Consultar%20estado%20de%20solicitud.jsp"
+   title="Consultar estado de solicitud">
+    <svg width="18" height="18"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2">
+
+        <circle cx="11" cy="11" r="8"/>
+        <path d="M21 21l-4.35-4.35"/>
+    </svg>
+    Consultar estado
 </a>
-       <a href="Mis solicitudes.jsp" class="btn-secondary"> 
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        Consultar estado
-      </a>
+
     </div>
   </div>
 </section>
@@ -386,7 +396,7 @@
 <section class="cta-final" id="contacto">
   <div class="wrap">
     <h2>¿Tienes un caso por resolver?</h2>
-    <a href="#" class="btn-primary">Enviar solicitud</a>
+    <a href="${pageContext.request.contextPath}/index.jsp" class="btn-primary">Enviar solicitud</a>
   </div>
 </section>
 
@@ -420,7 +430,7 @@
       </div>
     </div>
   </div>
-  <p class="bottom-bar">© 2026 Conezha. Todos los derechos reservados.</p>
+  <p class="bottom-bar">© 2026 CONEZHYA. Todos los derechos reservados.</p>
 </footer>
 
 </body>
